@@ -26,7 +26,7 @@
   "homepage": "https://github.com/matteogheza/winston-winlog3",
   "dependencies": {
     "circular-json": "^0.1.6",
-    "node-eventlog": "^1.0.2",
+    "node-eventlog": "github.com:Distributive-Network/node-eventlog#7d250cdda8ca0873812ceac5ddede7aee680e5b0",
     "winston": "^1.0.0"
   }
 }
