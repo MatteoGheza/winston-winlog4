@@ -5,7 +5,7 @@ var winston = require('winston');
 var winlog = require('../');
 
 
-describe('winston-winlog2', function() {
+describe('winston-winlog3', function() {
 	
 	before( function() {
 		winston.add( winlog, {} );

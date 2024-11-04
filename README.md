@@ -1,6 +1,4 @@
-# winston-winlog2
-
-***This project is no longer maintained***
+# winston-winlog3
 
 Windows Event Log logger for the node.js Winston module.
 
@@ -8,7 +6,7 @@ Exactly like the original winston-winlog, however uses coreybutler/node-windows 
 
 ## Installation
 
-    $ npm install winston-winlog2
+    $ npm install winston-winlog3
     $ npm install winston
 
 
@@ -18,7 +16,7 @@ Configure :
 
 ```js
   var winston = require('winston'),
-      winlog = require("winston-winlog2");
+      winlog = require("winston-winlog3");
 
   winston.add(winlog, { source: 'myapp' });
 ```
@@ -31,21 +29,6 @@ Then you can do:
   winston.error("this is an error message");
 ```
 
-And you will see
-
-![2012-04-07_1148.png](http://joseoncodecom.ipage.com/wp-content/uploads/images/2012-04-07_1148.png)
-
-### Custom event log
-
-When adding the transport you can define a custom event log as follows:
-
-```js
-  winston.add(winlog, { source: 'myapp', eventLog: 'MyCustomEventLog' });
-```
-
-Then you will find your logs under "Applications and Services Logs"
-
-![2012-04-20_0904.png](http://joseoncodecom.ipage.com/wp-content/uploads/images/2012-04-20_0904.png)
 
 ## How it works
 
