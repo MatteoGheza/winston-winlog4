@@ -2,7 +2,9 @@
 
 Windows Event Log logger for the node.js Winston module.
 
-Exactly like the original winston-winlog, however uses coreybutler/node-windows instead of jfromaniello/windowseventlogjs so no native compiling using node-gyp is required. Also automatically pops up a UAC box if admin permissions are required.
+Exactly like the original winston-winlog, however uses Distributive-Network/node-eventlog instead of coreybutler/node-windows so no admin permissions are required.
+
+Fork of https://github.com/peteward44/winston-winlog2
 
 ## Installation
 
