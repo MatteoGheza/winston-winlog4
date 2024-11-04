@@ -1,5 +1,5 @@
 {
-  "name": "winston-winlog3",
+  "name": "winston-winlog4",
   "version": "1.0.2",
   "description": "Windows Event Log logger for the node.js Winston module.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/matteogheza/winston-winlog3.git"
+    "url": "https://github.com/matteogheza/winston-winlog4.git"
   },
   "keywords": [
     "windows",
@@ -21,9 +21,9 @@
   "author": "Matteo Gheza <matteo.gheza07@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/matteogheza/winston-winlog3/issues"
+    "url": "https://github.com/matteogheza/winston-winlog4/issues"
   },
-  "homepage": "https://github.com/matteogheza/winston-winlog3",
+  "homepage": "https://github.com/matteogheza/winston-winlog4",
   "dependencies": {
     "circular-json": "^0.1.6",
     "node-eventlog": "github.com:Distributive-Network/node-eventlog#7d250cdda8ca0873812ceac5ddede7aee680e5b0",

@@ -1,1 +1,1 @@
-module.exports = require('./lib/winston-winlog3.js');
+module.exports = require('./lib/winston-winlog4.js');

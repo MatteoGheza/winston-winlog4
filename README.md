@@ -1,4 +1,4 @@
-# winston-winlog3
+# winston-winlog4
 
 Windows Event Log logger for the node.js Winston module.
 
@@ -8,7 +8,7 @@ Fork of https://github.com/peteward44/winston-winlog2
 
 ## Installation
 
-    $ npm install winston-winlog3
+    $ npm install winston-winlog4
     $ npm install winston
 
 
@@ -18,7 +18,7 @@ Configure :
 
 ```js
   var winston = require('winston'),
-      winlog = require("winston-winlog3");
+      winlog = require("winston-winlog4");
 
   winston.add(winlog, { source: 'myapp' });
 ```
