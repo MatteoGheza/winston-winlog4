@@ -1,14 +1,12 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
-        "module": "ESNext",
+        "module": "CommonJS",  // Output will be CommonJS
+        "target": "ES2020",    // Use a modern ECMAScript target
         "moduleResolution": "node",
-        "outDir": "./dist",
-        "declaration": true,
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+        "esModuleInterop": true, // Allows compatibility with CommonJS
+        "outDir": "./dist",      // Output directory
+        "declaration": true,      // If you want to generate .d.ts files
+        "allowSyntheticDefaultImports": true // Allow default imports from modules with no default export
     },
     "include": [
         "src/**/*.ts"

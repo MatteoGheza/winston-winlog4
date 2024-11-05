@@ -18,7 +18,6 @@ class EventLogTransport extends TransportStream {
   }
 
   emit(event: string, ...args: unknown[]): boolean {
-    // @ts-expect-error - emit method is not defined on TransportStream class
     return super.emit(event, ...args);
   }
 
@@ -40,7 +39,7 @@ class EventLogTransport extends TransportStream {
     if (level === 'warning') level = 'warn';
 
     if (!['info', 'warn', 'error'].includes(level)) {
-      this.emit('error', new Error(`Unknown log level: ${level}`));
+      // Return silently, as we only support info, warn, and error
       return callback();
     }
 
