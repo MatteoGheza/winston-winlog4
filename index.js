@@ -1,1 +1,0 @@
-module.exports = require('./lib/winston-winlog4.js');

@@ -2,7 +2,7 @@
 
 Windows Event Log logger for the node.js Winston module.
 
-Exactly like the original winston-winlog, however uses Distributive-Network/node-eventlog instead of coreybutler/node-windows so no admin permissions are required.
+Exactly like the original winston-winlog, however uses xSlither/node-eventlog instead of coreybutler/node-windows so no admin permissions are required.
 
 Fork of https://github.com/peteward44/winston-winlog2
 
@@ -34,6 +34,6 @@ Then you can do:
 
 ## How it works
 
-This transport uses the module [node-windows](https://github.com/coreybutler/node-windows) to log events. 
+This transport uses the module [node-eventlog](https://github.com/xSlither/node-eventlog) to log events. 
 
 The transport will do nothing (*doesn't throw!*) if you run it on a platform other than win32.
