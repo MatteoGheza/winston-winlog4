@@ -1,39 +1,69 @@
 # winston-winlog4
 
-Windows Event Log logger for the node.js Winston module.
-
-Exactly like the original winston-winlog, however uses xSlither/node-eventlog instead of coreybutler/node-windows so no admin permissions are required.
-
-Fork of https://github.com/peteward44/winston-winlog2
+`winston-winlog4` is a custom transport for [Winston](https://github.com/winstonjs/winston), designed to log messages to the Windows Event Log. It is a fork of [`winston-winlog2`](https://github.com/peteward44/winston-winlog2) and uses the `node-eventlog` library to write structured log data directly to the Windows Event Viewer. This transport is ideal for applications running on Windows where centralized, system-wide logging is beneficial.
 
 ## Installation
 
-    $ npm install winston-winlog4
-    $ npm install winston
+Install via npm:
 
+```bash
+npm install winston-winlog4
+```
 
 ## Usage
 
-Configure :
+To use `winston-winlog4`, import and add it to your Winston logger's transports.
 
-```js
-  var winston = require('winston'),
-      winlog = require("winston-winlog4");
+```javascript
+import winston from 'winston';
+import EventLogTransport from 'winston-winlog4';
 
-  winston.add(winlog, { source: 'myapp' });
+const logger = winston.createLogger({
+  transports: [
+    new EventLogTransport({
+      source: 'MyApplicationName', // Optional, defaults to 'node'
+      level: 'info'                // Set the minimum level for this transport
+    })
+  ]
+});
+
+// Example logs
+logger.info('Application started');
+logger.warn('Potential issue detected');
+logger.error('An error occurred');
 ```
 
-Then you can do:
+This will log messages to the Windows Event Log under the specified source name, with levels `info`, `warn`, or `error`.
+
+## Options
+
+The `EventLogTransport` class accepts the following options:
+
+| Option       | Type     | Description                                               | Default |
+|--------------|----------|-----------------------------------------------------------|---------|
+| `source`     | `string` | The source name shown in the Event Viewer                 | `node`  |
+| `level`      | `string` | The minimum level of messages to log (`info`, `warn`, `error`) | `info` |
+
+## Features
+
+- **Direct Windows Event Logging**: Logs are sent to the Windows Event Log, accessible in the Windows Event Viewer.
+- **JSON Metadata Support**: Includes metadata with each log, formatted as a JSON string, for easier log analysis.
+- **Supported Levels**: Only logs at `info`, `warn`, or `error` levels are supported to match typical Windows Event Viewer log levels.
+
+## Handling Metadata
+
+Metadata is supported in the `info` parameter of the `log` function, where it is converted to a JSON string using `flatted`. If metadata cannot be parsed, it falls back gracefully with an error message. Any newlines in the log messages are removed for compatibility with the Event Viewer.
+
+## Development
+
+To clone the repository and contribute:
 
 ```bash
-  winston.info("this is an info message");
-  winston.warning("this is an warning message");
-  winston.error("this is an error message");
+git clone https://github.com/matteogheza/winston-winlog4
+cd winston-winlog4
+npm install
 ```
 
+## License
 
-## How it works
-
-This transport uses the module [node-eventlog](https://github.com/xSlither/node-eventlog) to log events. 
-
-The transport will do nothing (*doesn't throw!*) if you run it on a platform other than win32.
+This module is licensed under the MIT License. See the LICENSE file for details.
