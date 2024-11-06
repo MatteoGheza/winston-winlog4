@@ -1,5 +1,5 @@
 import TransportStream, { TransportStreamOptions } from 'winston-transport';
-import circularJson from 'circular-json';
+import { stringify } from 'flatted';
 import { EventLog, Severity } from 'node-eventlog';
 
 interface EventLogTransportOptions extends TransportStreamOptions {
@@ -30,7 +30,7 @@ class EventLogTransport extends TransportStream {
     const meta = info.meta || {};
     if (meta && Object.keys(meta).length > 0) {
       try {
-        message += ` metadata: ${circularJson.stringify(meta, null, 2)}`;
+        message += ` metadata: ${stringify(meta, null, 2)}`;
       } catch {
         message += ' metadata: [Could not parse]';
       }
