@@ -49,6 +49,8 @@ The `EventLogTransport` class accepts the following options:
 - **Direct Windows Event Logging**: Logs are sent to the Windows Event Log, accessible in the Windows Event Viewer.
 - **JSON Metadata Support**: Includes metadata with each log, formatted as a JSON string, for easier log analysis.
 - **Supported Levels**: Only logs at `info`, `warn`, or `error` levels are supported to match typical Windows Event Viewer log levels.
+- **Does Not Require Admin Privileges**: The transport does not require admin privileges to write to the Event Log.
+- **Doesn't do anything on non-Windows platforms**: The transport doesn't import native modules on non-Windows platforms.
 
 ## Handling Metadata
 

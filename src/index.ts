@@ -1,6 +1,13 @@
 import TransportStream, { TransportStreamOptions } from 'winston-transport';
 import { stringify } from 'flatted';
-import { EventLog, Severity } from 'node-eventlog';
+import { platform } from 'os';
+
+type Severity = "info" | "warn" | "error";
+declare class EventLogClass {
+  public readonly source: string;
+  constructor(source: string);
+  log(message: string, severity?: Severity, code?: number): Promise<boolean>;
+}
 
 interface EventLogTransportOptions extends TransportStreamOptions {
   source?: string;
@@ -8,13 +15,21 @@ interface EventLogTransportOptions extends TransportStreamOptions {
 
 class EventLogTransport extends TransportStream {
   private source: string;
-  private logger: EventLog;
+  private logger: EventLogClass | null = null;
 
   constructor(options: EventLogTransportOptions = {}) {
     super(options);
 
     this.source = options.source || 'node';
-    this.logger = new EventLog(this.source);
+    if (platform() === 'win32') {
+      import('node-eventlog').then((module) => {
+        this.logger = new module.EventLog(this.source);
+      }).catch((err) => {
+        this.emit('error', err);
+      });
+    } else {
+      this.logger = undefined;
+    }
   }
 
   emit(event: string, ...args: unknown[]): boolean {
