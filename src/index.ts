@@ -22,7 +22,7 @@ class EventLogTransport extends TransportStream {
 
     this.source = options.source || 'node';
     if (platform() === 'win32') {
-      import('node-eventlog').then((module) => {
+      import('@matteogheza/node-eventlog').then((module) => {
         this.logger = new module.EventLog(this.source);
       }).catch((err) => {
         this.emit('error', err);
